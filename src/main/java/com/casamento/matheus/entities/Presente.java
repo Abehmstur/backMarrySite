@@ -26,12 +26,8 @@ public class Presente {
     }
 
     public Boolean isDisponivel(){
-        return this.qtd_present < this.listaConvidado.size();
+        return this.qtd_present > 0;
     };
-
-    public int getQtdDisponivel(){
-        return this.qtd_present - this.listaConvidado.size();
-    }
 
     public UUID getId() {
         return id;
