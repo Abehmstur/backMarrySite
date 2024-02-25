@@ -12,6 +12,7 @@ public class Convidado {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String nome;
+    private String Mensagem;
     @ManyToOne
     private Presente presente;
 
@@ -37,5 +38,13 @@ public class Convidado {
 
     public void setPresente(Presente presente) {
         this.presente = presente;
+    }
+
+    public String getMensagem() {
+        return Mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        Mensagem = mensagem;
     }
 }
