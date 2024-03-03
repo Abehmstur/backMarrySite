@@ -4,7 +4,10 @@ import com.casamento.matheus.entities.Convidado;
 import com.casamento.matheus.entities.Presente;
 import com.casamento.matheus.repositories.ConvidadoRepository;
 import com.casamento.matheus.repositories.PresenteRepository;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -59,10 +62,10 @@ public class PresenteController {
     public Object cadastrarConvidado(@PathVariable(value = "id") UUID id, @RequestBody Convidado convidado){
         Optional<Presente> presente = presenteRepository.findById(id);
         if(presente.isEmpty()){
-            return "presente não existe!";
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("presente não existe!");
         }
         if(!presente.get().isDisponivel()){
-            return "presente não disponivel";
+            return ResponseEntity.status(HttpStatus.NOT_MODIFIED).body("presente não disponivel");
         }
         Convidado convidado1 = new Convidado();
         convidado1.setPresente(presente.get());
