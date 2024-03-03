@@ -17,6 +17,7 @@ public class Presente {
     private String urlImg;
     private String nome;
     private int qtd_present;
+    private boolean pix;
 
     @OneToMany
     private List<Convidado> listaConvidado;
@@ -59,5 +60,13 @@ public class Presente {
 
     public void setQtd_present(int qtd_present) {
         this.qtd_present = qtd_present;
+    }
+
+    public boolean isPix() {
+        return pix;
+    }
+
+    public void setPix(boolean pix) {
+        this.pix = pix;
     }
 }
